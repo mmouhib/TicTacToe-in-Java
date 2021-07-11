@@ -1,10 +1,11 @@
 package com.mouhib;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         char[][] board = new char[][]{
                 {'1', '2', '3'},
@@ -12,10 +13,22 @@ public class Main {
                 {'7', '8', '9'}
         };
 
-//        char symbol = getSymbol();
-//        char choice = choice(board);
-//        filler(board,choice,symbol);
-//        boardPrinter(board);
+        char ComputerChoice, symbol = getSymbol();
+        if (symbol == 'X')
+            ComputerChoice = 'O';
+        else
+            ComputerChoice = 'X';
+
+
+        while (true){
+            boardPrinter(board);
+            char choice = choice(board);
+            filler(board,choice,symbol);
+            Runtime.getRuntime().exec("clear");
+            if (Draw(board) || Winner(board,choice)){
+                break;
+            }
+        }
     }
 
 
@@ -88,9 +101,7 @@ public class Main {
         if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[2][2] == symbol) {return true;}
 
         //diagonal top right to bottom left
-        if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[2][0] == symbol) {return true;}
-
-        return false;
+        return board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[2][0] == symbol;
     }
 
     public static boolean Draw(char [][] board){
