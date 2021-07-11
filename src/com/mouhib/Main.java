@@ -6,8 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        char[][] board;
-        board = new char[][]{
+        char[][] board = new char[][]{
                 {'1', '2', '3'},
                 {'4', '5', '6'},
                 {'7', '8', '9'}
@@ -17,7 +16,6 @@ public class Main {
 //        char choice = choice(board);
 //        filler(board,choice,symbol);
 //        boardPrinter(board);
-
     }
 
 
@@ -75,17 +73,6 @@ public class Main {
     }
 
 
-    /*
-            ----+---+----
-            | 1 | 2 | 3 |
-            ----+---+----
-            | 4 | 5 | 6 |
-            ----+---+----
-            | 7 | 8 | 9 |
-            ----+---+----
-    */
-
-
     public static boolean Winner(char[][] board, char symbol){
         //straight horizontal
         if (board[0][0] == board[0][1] && board[0][1] == board[0][2] && board[0][2] == symbol) {return true;}
@@ -97,21 +84,26 @@ public class Main {
         if (board[0][1] == board[1][1] && board[1][1] == board[2][1] && board[2][1] == symbol) {return true;}
         if (board[0][2] == board[1][2] && board[1][2] == board[2][2] && board[2][2] == symbol) {return true;}
 
-        //diagonal top left to buttom right
+        //diagonal top left to bottom right
         if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[2][2] == symbol) {return true;}
 
-        //diagonal top right to buttom left
+        //diagonal top right to bottom left
         if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[2][0] == symbol) {return true;}
 
         return false;
     }
 
-//    public static boolean Draw(char [][] board){
-//        for (int i = 0; i < board.length; i++) {
-//            for (int j = 0; j < board.length; j++) {
-//                if (board[i][j] ! in  )
-//            }
-//        }
-//        return true;
-//    }
+    public static boolean Draw(char [][] board){
+        if (Winner(board,'X') || Winner(board,'O')){
+            return false;
+        }
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                if (board[i][j] >= '1' && board[i][j] <= '9'){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
