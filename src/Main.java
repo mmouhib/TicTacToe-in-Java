@@ -1,11 +1,10 @@
 package com.mouhib;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
         char[][] board = {
